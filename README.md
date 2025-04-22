@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+```markdown
+# Invitro Capital Demo
 
-## Getting Started
+Invitro Capital Demo is a modern web application for booking medical appointments, designed with a focus on user experience and accessibility.
 
-First, run the development server:
+## 🚀 Features
+- Find and book appointments with doctors
+- View upcoming appointments
+- Responsive design for mobile and desktop
+- Accessible user interface
 
+## 📋 Prerequisites
+- Node.js
+- npm
+```
+## 🔧 Setup Instructions
+
+### 1. Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/RummanSadiq/invitro-capital-demo.git
+cd invitro-capital-demo
+
+
+### 2. Install Dependencies
+```bash
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Run the Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧪 Build and Test
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Build for production
+```bash
+npm run build
+```
 
-## Learn More
+### Run tests
+```bash
+npm run test
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🤖 AI Development Tools and Assistance
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Approach to AI-Assisted Development
+In developing this project, I strategically leveraged AI tools to enhance development efficiency and code quality. The AI assistance was carefully applied to:
+- Enhance accessibility implementations
+- Provide intelligent code refactoring suggestions
+- Validate complex interaction patterns
+- Identify potential optimization opportunities
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+By integrating AI as a collaborative tool, the project benefited from:
+- Accelerated development cycles
+- Improved code quality
+- Comprehensive accessibility considerations
 
-## Deploy on Vercel
+## 🚧 Known Limitations
+- Mock data is currently used instead of a real backend
+- No full authentication flow implemented
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔜 Roadmap and Next Steps
+- Implement real backend integration
+- Develop full user authentication
+- Expand test coverage
+- Expand Test Coverage: Additional tests will be written to cover more scenarios and edge cases.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📞 Contact
+Rumman Sadiq - hey.rummansadiq@gmail.com  
+```
