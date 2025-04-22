@@ -6,6 +6,7 @@ import {
   useMemo,
   useState,
   useEffect,
+  useId,
 } from "react";
 import { Filter, X } from "lucide-react";
 import { availabilityOptions, specialties } from "@/lib/constants";
@@ -53,6 +54,10 @@ export const DoctorFilter: FunctionComponent<Props> = ({
   });
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
+  const specialtyLabelId = useId();
+  const availabilityLabelId = useId();
+  const filterSectionId = useId();
+
   // Sync temp filters when parent state changes
   useEffect(() => {
     setTempFilters({
@@ -70,7 +75,7 @@ export const DoctorFilter: FunctionComponent<Props> = ({
         onFilterChange(specialtyFilter, value as AvailabilityDay);
       }
     },
-    [onFilterChange, specialtyFilter, availabilityFilter],
+    [onFilterChange, specialtyFilter, availabilityFilter]
   );
 
   // Mobile filter handlers
@@ -81,7 +86,7 @@ export const DoctorFilter: FunctionComponent<Props> = ({
         [key]: value,
       }));
     },
-    [],
+    []
   );
 
   const applyFilters = useCallback(() => {
@@ -105,7 +110,7 @@ export const DoctorFilter: FunctionComponent<Props> = ({
     () =>
       specialtyFilter !== Specialties.All ||
       availabilityFilter !== AvailabilityDay.All,
-    [specialtyFilter, availabilityFilter],
+    [specialtyFilter, availabilityFilter]
   );
 
   // Calculate active filter count for mobile badge
@@ -113,22 +118,41 @@ export const DoctorFilter: FunctionComponent<Props> = ({
     () =>
       (specialtyFilter !== "All" ? 1 : 0) +
       (availabilityFilter !== "All" ? 1 : 0),
-    [specialtyFilter, availabilityFilter],
+    [specialtyFilter, availabilityFilter]
   );
 
   return (
-    <div className="mb-8">
+    <div
+      className="mb-8"
+      role="region"
+      aria-label="Doctor Search Filters"
+      id={filterSectionId}
+    >
       {/* Desktop Filter */}
-      <div className="hidden lg:flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm">
+      <div
+        className="hidden lg:flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm"
+        role="toolbar"
+        aria-label="Desktop Doctor Filters"
+      >
         <div className="flex items-center gap-3">
-          <span className="font-medium text-sm text-gray-600">Specialty:</span>
+          <label
+            htmlFor={`specialty-select-${specialtyLabelId}`}
+            className="font-medium text-sm text-gray-600"
+            id={specialtyLabelId}
+          >
+            Specialty:
+          </label>
           <Select
             value={specialtyFilter}
             onValueChange={(value) =>
               handleDesktopFilterChange("specialty", value)
             }
           >
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger
+              className="w-[180px]"
+              id={`specialty-select-${specialtyLabelId}`}
+              aria-labelledby={specialtyLabelId}
+            >
               <SelectValue placeholder="Select specialty" />
             </SelectTrigger>
             <SelectContent>
@@ -145,16 +169,24 @@ export const DoctorFilter: FunctionComponent<Props> = ({
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="font-medium text-sm text-gray-600">
+          <label
+            htmlFor={`availability-select-${availabilityLabelId}`}
+            className="font-medium text-sm text-gray-600"
+            id={availabilityLabelId}
+          >
             Available on:
-          </span>
+          </label>
           <Select
             value={availabilityFilter}
             onValueChange={(value) =>
               handleDesktopFilterChange("availability", value)
             }
           >
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger
+              className="w-[180px]"
+              id={`availability-select-${availabilityLabelId}`}
+              aria-labelledby={availabilityLabelId}
+            >
               <SelectValue placeholder="Select day" />
             </SelectTrigger>
             <SelectContent>
@@ -176,8 +208,9 @@ export const DoctorFilter: FunctionComponent<Props> = ({
             onClick={clearFilters}
             className="ml-auto text-sm"
             size="sm"
+            aria-label="Clear all filters"
           >
-            <X className="h-4 w-4 mr-1" />
+            <X className="h-4 w-4 mr-1" aria-hidden="true" />
             Clear filters
           </Button>
         )}
@@ -190,17 +223,25 @@ export const DoctorFilter: FunctionComponent<Props> = ({
             <Button
               variant="outline"
               className="flex items-center gap-2 w-full justify-center"
+              aria-label="Open Doctor Filters"
             >
-              <Filter size={16} />
+              <Filter size={16} aria-hidden="true" />
               <span>Filter Doctors</span>
               {hasActiveFilters && (
-                <span className="ml-1 bg-primary/20 text-primary text-xs py-0.5 px-1.5 rounded-full">
+                <span
+                  className="ml-1 bg-primary/20 text-primary text-xs py-0.5 px-1.5 rounded-full"
+                  aria-label={`${activeFilterCount} active filters`}
+                >
                   {activeFilterCount}
                 </span>
               )}
             </Button>
           </SheetTrigger>
-          <SheetContent side="bottom" className="h-[70vh]">
+          <SheetContent
+            side="bottom"
+            className="h-[70vh]"
+            aria-label="Mobile Doctor Filters"
+          >
             <SheetHeader>
               <SheetTitle>Filter Doctors</SheetTitle>
               <SheetDescription>
@@ -209,14 +250,22 @@ export const DoctorFilter: FunctionComponent<Props> = ({
             </SheetHeader>
             <div className="py-6 space-y-6 px-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Specialty</label>
+                <label
+                  htmlFor={`mobile-specialty-select-${specialtyLabelId}`}
+                  className="text-sm font-medium block"
+                >
+                  Specialty
+                </label>
                 <Select
                   value={tempFilters.specialty}
                   onValueChange={(value) =>
                     handleTempFilterChange("specialty", value)
                   }
                 >
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger
+                    className="w-full"
+                    id={`mobile-specialty-select-${specialtyLabelId}`}
+                  >
                     <SelectValue placeholder="Select specialty" />
                   </SelectTrigger>
                   <SelectContent>
@@ -230,14 +279,22 @@ export const DoctorFilter: FunctionComponent<Props> = ({
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Available on</label>
+                <label
+                  htmlFor={`mobile-availability-select-${availabilityLabelId}`}
+                  className="text-sm font-medium block"
+                >
+                  Available on
+                </label>
                 <Select
                   value={tempFilters.availability}
                   onValueChange={(value) =>
                     handleTempFilterChange("availability", value)
                   }
                 >
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger
+                    className="w-full"
+                    id={`mobile-availability-select-${availabilityLabelId}`}
+                  >
                     <SelectValue placeholder="Select day" />
                   </SelectTrigger>
                   <SelectContent>
@@ -250,15 +307,24 @@ export const DoctorFilter: FunctionComponent<Props> = ({
                 </Select>
               </div>
             </div>
-            <SheetFooter className="flex-col sm:flex-row gap-3">
+            <SheetFooter
+              className="flex-col sm:flex-row gap-3"
+              role="group"
+              aria-label="Filter Actions"
+            >
               <Button
                 variant="outline"
                 onClick={clearFilters}
                 className="w-full sm:w-auto"
+                aria-label="Clear all filters"
               >
                 Clear all
               </Button>
-              <Button className="w-full sm:w-auto" onClick={applyFilters}>
+              <Button
+                className="w-full sm:w-auto"
+                onClick={applyFilters}
+                aria-label="Apply selected filters"
+              >
                 Apply Filters
               </Button>
             </SheetFooter>

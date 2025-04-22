@@ -31,7 +31,7 @@ export const DoctorView: FunctionComponent = () => {
       const shortDay =
         DayAbbreviation[availability as Exclude<AvailabilityDay, "All">];
       results = results.filter((doctor) =>
-        doctor.availability.some((day) => day.includes(shortDay)),
+        doctor.availability.some((day) => day.includes(shortDay))
       );
     }
 
@@ -50,15 +50,24 @@ export const DoctorView: FunctionComponent = () => {
         setIsLoading(false);
       }, 500);
     },
-    [],
+    []
   );
   const totalDoctors = useMemo(() => filteredDoctors.length, [filteredDoctors]);
 
   return (
-    <div className={classNames("container mx-auto px-4 py-8")}>
+    <div
+      className={classNames("container mx-auto px-4 py-8")}
+      role="main"
+      aria-label="Doctor Search Page"
+    >
       <div className={classNames("mb-8 flex flex-col gap-2")}>
-        <h1 className={classNames("text-3xl font-bold")}>Find a Doctor</h1>
-        <p className={classNames("text-gray-600")}>
+        <h1 id="page-title" className={classNames("text-3xl font-bold")}>
+          Find a Doctor
+        </h1>
+        <p
+          className={classNames("text-gray-600")}
+          aria-describedby="page-title"
+        >
           Browse our network of qualified healthcare professionals
         </p>
       </div>
@@ -68,21 +77,43 @@ export const DoctorView: FunctionComponent = () => {
         specialtyFilter={filters.specialty}
         availabilityFilter={filters.availability}
         onFilterChange={handleFilterChange}
+        aria-label="Doctor Search Filters"
       />
 
       {/* Results summary */}
-      <div className={classNames("mb-6 flex items-center justify-between")}>
-        <div className={classNames("flex items-center gap-2")}>
-          <span className={classNames("text-sm text-gray-600")}>
+      <div
+        className={classNames("mb-6 flex items-center justify-between")}
+        role="region"
+        aria-label="Search Results Summary"
+      >
+        <div
+          className={classNames("flex items-center gap-2")}
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <span
+            className={classNames("text-sm text-gray-600")}
+            id="doctor-count"
+          >
             Showing {totalDoctors} {totalDoctors === 1 ? "doctor" : "doctors"}
           </span>
           {filters.specialty !== Specialties.All && (
-            <Badge variant="secondary" className={classNames("text-xs")}>
+            <Badge
+              variant="secondary"
+              className={classNames("text-xs")}
+              role="status"
+              aria-label={`Specialty Filter: ${filters.specialty}`}
+            >
               {filters.specialty}
             </Badge>
           )}
           {filters.availability !== AvailabilityDay.All && (
-            <Badge variant="secondary" className={classNames("text-xs")}>
+            <Badge
+              variant="secondary"
+              className={classNames("text-xs")}
+              role="status"
+              aria-label={`Availability Filter: ${filters.availability}`}
+            >
               {filters.availability}
             </Badge>
           )}
@@ -90,7 +121,12 @@ export const DoctorView: FunctionComponent = () => {
       </div>
 
       {/* Doctor list component */}
-      <DoctorList doctors={filteredDoctors} isLoading={isLoading} />
+      <DoctorList
+        doctors={filteredDoctors}
+        isLoading={isLoading}
+        aria-labelledby="doctor-count"
+        aria-busy={isLoading}
+      />
     </div>
   );
 };

@@ -6,10 +6,14 @@ import { FunctionComponent } from "react";
 
 export const HomeView: FunctionComponent = () => {
   return (
-    <section className={classNames("flex flex-col px-4 py-12")}>
+    <main
+      className={classNames("flex flex-col px-4 py-12")}
+      role="main"
+      aria-labelledby="page-title"
+    >
       <HeroSection />
       <FeaturesSection />
       <CTASection />
-    </section>
+    </main>
   );
 };

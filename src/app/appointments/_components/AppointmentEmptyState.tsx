@@ -6,24 +6,38 @@ import { FunctionComponent } from "react";
 
 export const AppointmentEmptyState: FunctionComponent = () => {
   return (
-    <Card>
+    <Card role="region" aria-labelledby="empty-state-title">
       <CardContent
         className={classNames(
-          "flex flex-col items-center justify-center py-12 text-center",
+          "flex flex-col items-center justify-center py-12 text-center"
         )}
       >
-        <div className={classNames("rounded-full bg-gray-100 p-3 mb-4")}>
-          <AlertCircle className={classNames("h-6 w-6 text-gray-500")} />
+        <div
+          className={classNames("rounded-full bg-gray-100 p-3 mb-4")}
+          aria-hidden="true"
+        >
+          <AlertCircle
+            className={classNames("h-6 w-6 text-gray-500")}
+            aria-hidden="true"
+          />
         </div>
-        <h3 className={classNames("text-lg font-medium text-gray-900 mb-1")}>
+        <h3
+          id="empty-state-title"
+          className={classNames("text-lg font-medium text-gray-900 mb-1")}
+        >
           No Upcoming Appointments
         </h3>
-        <p className={classNames("text-gray-500 mb-4 max-w-md")}>
+        <p
+          className={classNames("text-gray-500 mb-4 max-w-md")}
+          aria-describedby="empty-state-title"
+        >
           You don&apos;t have any upcoming appointments. Book a new appointment
           to see it here.
         </p>
-        <Button asChild>
-          <a href="/doctors">Book an Appointment</a>
+        <Button aria-label="Navigate to doctor booking page">
+          <a href="/doctors" aria-label="Book an Appointment">
+            Book an Appointment
+          </a>
         </Button>
       </CardContent>
     </Card>

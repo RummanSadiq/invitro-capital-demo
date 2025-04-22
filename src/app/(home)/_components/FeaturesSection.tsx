@@ -25,15 +25,25 @@ const features = [
 
 export const FeaturesSection: FunctionComponent = () => {
   return (
-    <section className="mb-16">
-      <h2 className="text-3xl font-bold text-center mb-10">How It Works</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section className="mb-16" aria-labelledby="features-heading">
+      <h2
+        id="features-heading"
+        className="text-3xl font-bold text-center mb-10"
+      >
+        How It Works
+      </h2>
+      <div
+        className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        role="list"
+        aria-label="Features"
+      >
         {features.map((feature, index) => (
           <FeatureCard
             key={index}
             icon={feature.icon}
             title={feature.title}
             description={feature.description}
+            index={index}
           />
         ))}
       </div>

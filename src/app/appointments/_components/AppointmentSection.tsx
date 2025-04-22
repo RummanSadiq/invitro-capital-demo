@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useId } from "react";
 import { useAppointmentContext } from "@/context/useAppointmentContext";
 import classNames from "classnames";
 import { Appointment, AppointmentStatus } from "@/types/appointment";
@@ -14,29 +14,48 @@ export default function AppointmentSection() {
     Appointment[]
   >([]);
 
+  const sectionTitleId = useId();
+
   const {
     state: { appointments },
   } = useAppointmentContext();
 
   useEffect(() => {
     const upcoming = appointments.filter(
-      (appointment) => appointment.status === AppointmentStatus.Upcoming,
+      (appointment) => appointment.status === AppointmentStatus.Upcoming
     );
     setUpcomingAppointments(upcoming);
     setIsLoading(false);
   }, [appointments]);
 
   return (
-    <section>
-      {isLoading && <AppointmentSkeleton />}
+    <section aria-labelledby={sectionTitleId} aria-busy={isLoading}>
+      <h2 id={sectionTitleId} className="sr-only">
+        Upcoming Appointments
+      </h2>
+
+      {isLoading && (
+        <div role="status" aria-label="Loading appointments">
+          <AppointmentSkeleton />
+        </div>
+      )}
+
       {upcomingAppointments.length ? (
-        <div className={classNames("grid gap-4 md:grid-cols-2")}>
+        <div
+          className={classNames("grid gap-4 md:grid-cols-2")}
+          role="list"
+          aria-label="Upcoming Appointments"
+        >
           {upcomingAppointments.map((appointment) => (
-            <AppointmentCard key={appointment.id} appointment={appointment} />
+            <div key={appointment.id} role="listitem">
+              <AppointmentCard appointment={appointment} />
+            </div>
           ))}
         </div>
       ) : (
-        <AppointmentEmptyState />
+        <div role="region" aria-label="No Upcoming Appointments">
+          <AppointmentEmptyState />
+        </div>
       )}
     </section>
   );
