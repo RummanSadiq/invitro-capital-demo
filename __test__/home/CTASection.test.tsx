@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { CTASection } from "@/app/(home)/_components/CTASection";
 import { ROUTES } from "@/utils/route";
+
 // Mock the next/link component
 jest.mock("next/link", () => {
   const MockLink = ({
@@ -65,25 +66,50 @@ describe("CTASection", () => {
     expect(appointmentsButton).toHaveAttribute("href", ROUTES.appointment);
   });
 
-  it("renders button with the secondary variant", () => {
-    // Only one actual button element is rendered based on the error output
-    const button = screen.getByRole("button");
-    expect(button).toHaveClass("bg-secondary");
+  it("renders buttons with the secondary variant", () => {
+    // There are multiple buttons
+    const buttons = screen.getAllByRole("button");
+    expect(buttons).toHaveLength(2);
+
+    // Check each button has the secondary class
+    buttons.forEach((button) => {
+      expect(button).toHaveClass("bg-secondary");
+    });
   });
 
   it("checks for large size styling", () => {
-    const button = screen.getByRole("button");
-    // The h-10 class suggests a specific height that could be associated with size="lg"
-    expect(button).toHaveClass("h-10");
-    expect(button).toHaveClass("px-6");
+    // Get all buttons
+    const buttons = screen.getAllByRole("button");
+
+    // Check size-related classes
+    buttons.forEach((button) => {
+      expect(button).toHaveClass("h-10");
+      expect(button).toHaveClass("px-6");
+    });
   });
 
   it("renders a responsive button layout with flex classes", () => {
-    const buttonContainer = screen
-      .getByRole("link", { name: /find a doctor/i })
-      .closest("div");
+    const buttonContainer = screen.getByRole("group", {
+      name: /call to action buttons/i,
+    });
     expect(buttonContainer).toHaveClass("flex");
     expect(buttonContainer).toHaveClass("flex-col");
     expect(buttonContainer).toHaveClass("sm:flex-row");
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    const section = screen.getByRole("complementary");
+    expect(section).toHaveAttribute("aria-labelledby", "cta-heading");
+
+    const heading = screen.getByRole("heading", { level: 2 });
+    expect(heading).toHaveAttribute("id", "cta-heading");
+
+    const description = screen.getByText(/Join thousands of patients/);
+    expect(description).toHaveAttribute("id", "cta-description");
+
+    const buttons = screen.getAllByRole("button");
+    buttons.forEach((button) => {
+      expect(button).toHaveAttribute("aria-describedby", "cta-description");
+    });
   });
 });
