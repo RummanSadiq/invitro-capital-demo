@@ -1,0 +1,262 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page matches snapshot 1`] = `
+<div>
+  <section
+    class="flex flex-col px-4 py-12"
+  >
+    <section
+      class="flex flex-col items-center justify-center text-center mb-16"
+    >
+      <h1
+        class="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+      >
+        Book Your Doctor Appointment with Ease
+      </h1>
+      <p
+        class="text-xl text-gray-600 max-w-2xl mb-8"
+      >
+        Find and schedule appointments with the best healthcare professionals in your area. No waiting times, no hassle.
+      </p>
+      <a
+        class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-10 rounded-md px-6 has-[>svg]:px-4"
+        data-slot="button"
+        href="doctors"
+      >
+        Find a Doctor
+      </a>
+    </section>
+    <section
+      class="mb-16"
+    >
+      <h2
+        class="text-3xl font-bold text-center mb-10"
+      >
+        How It Works
+      </h2>
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-8"
+      >
+        <div
+          class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm text-center"
+          data-slot="card"
+        >
+          <div
+            class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6"
+            data-slot="card-header"
+          >
+            <div
+              class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-user size-8 text-black"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"
+                />
+                <circle
+                  cx="12"
+                  cy="7"
+                  r="4"
+                />
+              </svg>
+            </div>
+            <div
+              class="font-semibold text-xl"
+              data-slot="card-title"
+            >
+              Find a Doctor
+            </div>
+          </div>
+          <div
+            class="px-6"
+            data-slot="card-content"
+          >
+            <p
+              class="text-gray-600"
+            >
+              Browse through our extensive list of qualified doctors and specialists in your area.
+            </p>
+          </div>
+        </div>
+        <div
+          class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm text-center"
+          data-slot="card"
+        >
+          <div
+            class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6"
+            data-slot="card-header"
+          >
+            <div
+              class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-calendar-days size-8 text-black"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 2v4"
+                />
+                <path
+                  d="M16 2v4"
+                />
+                <rect
+                  height="18"
+                  rx="2"
+                  width="18"
+                  x="3"
+                  y="4"
+                />
+                <path
+                  d="M3 10h18"
+                />
+                <path
+                  d="M8 14h.01"
+                />
+                <path
+                  d="M12 14h.01"
+                />
+                <path
+                  d="M16 14h.01"
+                />
+                <path
+                  d="M8 18h.01"
+                />
+                <path
+                  d="M12 18h.01"
+                />
+                <path
+                  d="M16 18h.01"
+                />
+              </svg>
+            </div>
+            <div
+              class="font-semibold text-xl"
+              data-slot="card-title"
+            >
+              Book Appointment
+            </div>
+          </div>
+          <div
+            class="px-6"
+            data-slot="card-content"
+          >
+            <p
+              class="text-gray-600"
+            >
+              Select a convenient time slot from the doctor's available schedule.
+            </p>
+          </div>
+        </div>
+        <div
+          class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm text-center"
+          data-slot="card"
+        >
+          <div
+            class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6"
+            data-slot="card-header"
+          >
+            <div
+              class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-map-pin size-8 text-black"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                />
+                <circle
+                  cx="12"
+                  cy="10"
+                  r="3"
+                />
+              </svg>
+            </div>
+            <div
+              class="font-semibold text-xl"
+              data-slot="card-title"
+            >
+              Visit Doctor
+            </div>
+          </div>
+          <div
+            class="px-6"
+            data-slot="card-content"
+          >
+            <p
+              class="text-gray-600"
+            >
+              Get directions to the doctor's office and receive appointment reminders.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="bg-black text-white rounded-lg p-8 md:p-12 text-center"
+    >
+      <h2
+        class="text-3xl font-bold mb-4"
+      >
+        Ready to Book Your Appointment?
+      </h2>
+      <p
+        class="text-lg mb-6 max-w-2xl mx-auto"
+      >
+        Join thousands of patients who have simplified their healthcare journey with our booking platform.
+      </p>
+      <div
+        class="flex flex-col sm:flex-row gap-4 justify-center"
+      >
+        <a
+          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80 h-10 rounded-md px-6 has-[>svg]:px-4"
+          data-slot="button"
+          href="doctors"
+        >
+          Find a Doctor
+        </a>
+        <button
+          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80 h-10 rounded-md px-6 has-[>svg]:px-4"
+          data-slot="button"
+        >
+          <a
+            class=""
+            href="/appointments"
+          >
+            My Appointments
+          </a>
+        </button>
+      </div>
+    </section>
+  </section>
+</div>
+`;
